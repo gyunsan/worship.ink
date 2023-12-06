@@ -1,4 +1,5 @@
 // import PocketBase from 'pocketbase';
+import RightSidebar from "@/components/layout/RightSidebar";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,7 +32,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <h1 className="p-12 text-center">ÐšÐ°ÐºÐ²Ð¸ ÑÑŠÐ±Ð¸Ñ‚Ð¸Ñ ÑÐ»ÐµÐ´Ð²Ð°Ñ‚... ðŸ¤”</h1>
+      <h1 className="p-12 text-center">Какви събития следват... 🤔</h1>
       <div>
         {notes?.map((note) => {
           return <Note key={note.id} note={note} />;
@@ -45,37 +46,46 @@ function Note({ note }: any) {
   const { id, title, content, created, start, image, end } = note || {};
 
   return (
-    <Link href={`/${id}`}>
-      <div className="sm:flex p-8">
-        <div style={{ position: "relative", width: "150px", height: "100px" }}>
-          <Image
-            src={`https://notes-hub.fly.dev/api/files/bo9f4kjgkhcv4ch/${id}/${image}`}
-            sizes="150px"
-            fill
-            style={{
-              objectFit: "contain",
-            }}
-            alt={title}
-          />
+    <div className="sm:flex p-8 bg-red-100">
+      <Link href={`/${id}`}>
+        <div className="bg-green-400">
+          <div
+            style={{ position: "relative", width: "150px", height: "100px" }}
+            className="bg-blue-100"
+          >
+            <Image
+              src={`https://notes-hub.fly.dev/api/files/bo9f4kjgkhcv4ch/${id}/${image}`}
+              sizes="150px"
+              fill
+              style={{
+                objectFit: "contain",
+              }}
+              alt={title}
+            />
+          </div>
+          <div className="pl-6">
+            <h4 className="text-lg font-bold">{title}</h4>
+            <p className="mt-1">{content}</p>
+            <p className="mt-1">Created: {changeDateTime(created)}</p>
+            <p>
+              <span style={{ color: "blue" }} className="text-red">
+                Event Start:
+              </span>{" "}
+              {changeDateTime(start)}
+            </p>
+            <p>
+              <span style={{ color: "red" }} className="text-red">
+                Event End:{" "}
+              </span>
+              {changeDateTime(end)}
+            </p>
+          </div>
         </div>
-        <div className="pl-6">
-          <h4 className="text-lg font-bold">{title}</h4>
-          <p className="mt-1">{content}</p>
-          <p className="mt-1">Created: {changeDateTime(created)}</p>
-          <p>
-            <span style={{ color: "blue" }} className="text-red">
-              Event Start:
-            </span>{" "}
-            {changeDateTime(start)}
-          </p>
-          <p>
-            <span style={{ color: "red" }} className="text-red">
-              Event End:{" "}
-            </span>
-            {changeDateTime(end)}
-          </p>
-        </div>
-      </div>
-    </Link>
+      </Link>
+
+      <RightSidebar>
+        <p>Right</p>
+      </RightSidebar>
+    </div>
   );
 }

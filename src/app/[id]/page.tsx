@@ -24,7 +24,7 @@ const product = {
     { id: 2, name: "Събитие", href: "#" },
   ],
   sizes: [
-    { name: "18L", description: "Perfect for a reasonable amount of snacks." },
+    { name: "18L", description: "For a reasonable amount of snacks." },
     { name: "20L", description: "Enough room for a serious amount of snacks." },
   ],
 };
