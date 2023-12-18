@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { MusicalNoteIcon } from "@heroicons/react/20/solid";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from "dayjs";
+dayjs.extend(relativeTime);
 // export const dynamic = 'auto',
 //   dynamicParams = true,
 //   revalidate = 0,
@@ -40,6 +43,7 @@ export default async function Events() {
 
 function Note({ note }: any) {
   const { id, title, author, image, created } = note || {};
+  const createdTime = dayjs(created).fromNow();
 
   return (
     <ul
@@ -71,7 +75,7 @@ function Note({ note }: any) {
             <p className="text-sm leading-6 text-gray-900">{author}</p>
             {title ? (
               <p className="mt-1 text-xs leading-5 text-gray-500">
-                Last seen <time dateTime={created}>{created}</time>
+                updated <time>{createdTime}</time>
               </p>
             ) : (
               <div className="mt-1 flex items-center gap-x-1.5">

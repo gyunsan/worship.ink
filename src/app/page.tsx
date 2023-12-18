@@ -2,6 +2,7 @@
 import RightSidebar from "@/components/layout/RightSidebar";
 import Image from "next/image";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -37,10 +38,10 @@ export default async function HomePage() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <div className="flex flex-nowrap justify-center">
-        <div>
+      <div className="flex flex-nowrap justify-center items-center">
+        <span>
           <h1 className="p-12 text-3xl">Събития</h1>
-        </div>
+        </span>
         <div>
           <Image src={"/events.svg"} width={100} height={100} alt="events" />
         </div>
@@ -55,7 +56,8 @@ export default async function HomePage() {
 }
 
 function Note({ note }: any) {
-  const { id, title, content, created, start, image, end } = note || {};
+  const { id, title, content, created, start, image, end, published } =
+    note || {};
   const startTime = dayjs(start).format("DD/MM/YYYY"); // 03/19/2022 03:57:25 PM"
   const endTime = dayjs(end).format("DD/MM/YYYY hh:mm" + "ч."); // 03/19/2022 03:57:25 PM"
   const createdTime = dayjs(created).fromNow();
@@ -63,10 +65,21 @@ function Note({ note }: any) {
 
   return (
     <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 sm:flex p-8 justify-center">
-      <Link href={`/${id}`}>
+      <Link href={`/events/${id}`}>
         <Card className="lg:w-[550px] md:w-fit">
           <CardHeader>
-            <CardDescription>{createdTime}</CardDescription>
+            <div className="flex items-center justify-between pt-2 text-lg text-zinc-700">
+              <div>
+                {" "}
+                <CardDescription>{createdTime}</CardDescription>
+              </div>
+              <div>
+                {" "}
+                <div>
+                  <Badge variant="outline">Русе</Badge>
+                </div>
+              </div>
+            </div>
             <CardTitle>{title}</CardTitle>
             <CardDescription>
               {" "}
@@ -74,7 +87,6 @@ function Note({ note }: any) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p>{content}</p>
             <AspectRatio ratio={16 / 9} className="bg-muted">
               <Image
                 src={`https://notes-hub.fly.dev/api/files/bo9f4kjgkhcv4ch/${id}/${image}`}
@@ -83,18 +95,13 @@ function Note({ note }: any) {
                 className="rounded-md object-cover"
               />
             </AspectRatio>
-            <CardDescription>
-            <div className="flex items-center justify-between pt-2 text-lg">
-        <div>Дата: {startTime}</div>
-        <div>От: {time}</div>
-      </div>
-      </CardDescription>
+            <CardContent>
+              <div className="flex items-center justify-between pt-2 text-lg text-zinc-700">
+                <div>Дата: {startTime}</div>
+                <div>От: {time}</div>
+              </div>
+            </CardContent>
           </CardContent>
-          <CardFooter>
-         
-            
-
-          </CardFooter>
         </Card>
       </Link>
 
