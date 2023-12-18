@@ -38,12 +38,12 @@ export default function MainLayout() {
           <div className='flex grow flex-col gap-y-5 overflow-y-auto shadow-md bg-white px-6'>
             <div className='flex h-32 shrink-0 items-center'>
               <Image
-                className='h-40  w-auto my-8 mx-auto'
+                className='w-auto h-20 '
                 src='/logo.svg'
                 alt='Your Company'
-                width={150}
-                height={150}
-              />
+                width={100}
+                height={200}
+              /> <div className='text-3xl'>worship.ink</div> 
             </div>
             <nav className='flex flex-1 flex-col'>
               <ul role='list' className='flex flex-1 flex-col gap-y-7'>
@@ -55,14 +55,14 @@ export default function MainLayout() {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-gray-50 text-green-600'
-                              : 'text-gray-700 hover:text-green-600 hover:bg-gray-50',
+                              ? 'bg-gray-50 text-[#1AA492]'
+                              : 'text-gray-700 hover:text-[#1AA492] hover:bg-gray-50',
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                           )}
                         >
                           <item.icon
                             className={classNames(
-                              item.current ? 'text-green-600' : 'text-gray-400 group-hover:text-green-600',
+                              item.current ? 'text-[#1AA492]' : 'text-gray-400 group-hover:text-[#1AA492]',
                               'h-6 w-6 shrink-0'
                             )}
                             aria-hidden='true'
@@ -82,16 +82,16 @@ export default function MainLayout() {
                           href={team.href}
                           className={classNames(
                             team.current
-                              ? 'bg-gray-50 text-green-600'
-                              : 'text-gray-700 hover:text-green-600 hover:bg-gray-50',
+                              ? 'bg-gray-50 text-[#1AA492]'
+                              : 'text-gray-700 hover:text-[#1AA492] hover:bg-gray-50',
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                           )}
                         >
                           <span
                             className={classNames(
                               team.current
-                                ? 'text-green-600 border-green-600'
-                                : 'text-gray-400 border-gray-200 group-hover:border-green-600 group-hover:text-green-600',
+                                ? 'text-[#1AA492] border-pink-600'
+                                : 'text-gray-400 border-gray-200 group-hover:border-pink-600 group-hover:text-[#1AA492]',
                               'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
                             )}
                           >

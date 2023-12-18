@@ -2,13 +2,18 @@
 import RightSidebar from "@/components/layout/RightSidebar";
 import Image from "next/image";
 import Link from "next/link";
-
-// export const dynamic = 'auto',
-//   dynamicParams = true,
-//   revalidate = 0,
-//   fetchCache = 'auto',
-//   runtime = 'nodejs',
-//   preferredRegion = 'auto'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 async function getNotes() {
   // const db = new PocketBase('http://127.0.0.1:8090');
@@ -31,8 +36,15 @@ export default async function HomePage() {
   const notes = await getNotes();
 
   return (
-    <div>
-      <h1 className="p-12 text-center">Какви събития следват... 🤔</h1>
+    <div className="mx-auto max-w-2xl">
+      <div className="flex flex-nowrap justify-center">
+        <div>
+          <h1 className="p-12 text-3xl">Събития</h1>
+        </div>
+        <div>
+          <Image src={"/events.svg"} width={100} height={100} alt="events" />
+        </div>
+      </div>
       <div>
         {notes?.map((note) => {
           return <Note key={note.id} note={note} />;
@@ -44,43 +56,46 @@ export default async function HomePage() {
 
 function Note({ note }: any) {
   const { id, title, content, created, start, image, end } = note || {};
+  const startTime = dayjs(start).format("DD/MM/YYYY"); // 03/19/2022 03:57:25 PM"
+  const endTime = dayjs(end).format("DD/MM/YYYY hh:mm" + "ч."); // 03/19/2022 03:57:25 PM"
+  const createdTime = dayjs(created).fromNow();
+  const time = dayjs(start).format("HH:mm" + "ч."); // 15:57ч."
 
   return (
-    <div className="sm:flex p-8 bg-red-100">
+    <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 sm:flex p-8 justify-center">
       <Link href={`/${id}`}>
-        <div className="bg-green-400">
-          <div
-            style={{ position: "relative", width: "150px", height: "100px" }}
-            className="bg-blue-100"
-          >
-            <Image
-              src={`https://notes-hub.fly.dev/api/files/bo9f4kjgkhcv4ch/${id}/${image}`}
-              sizes="150px"
-              fill
-              style={{
-                objectFit: "contain",
-              }}
-              alt={title}
-            />
-          </div>
-          <div className="pl-6">
-            <h4 className="text-lg font-bold">{title}</h4>
-            <p className="mt-1">{content}</p>
-            <p className="mt-1">Created: {changeDateTime(created)}</p>
-            <p>
-              <span style={{ color: "blue" }} className="text-red">
-                Event Start:
-              </span>{" "}
-              {changeDateTime(start)}
-            </p>
-            <p>
-              <span style={{ color: "red" }} className="text-red">
-                Event End:{" "}
-              </span>
-              {changeDateTime(end)}
-            </p>
-          </div>
-        </div>
+        <Card className="lg:w-[550px] md:w-fit">
+          <CardHeader>
+            <CardDescription>{createdTime}</CardDescription>
+            <CardTitle>{title}</CardTitle>
+            <CardDescription>
+              {" "}
+              Апостолска църква "Дом на Пробив"
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>{content}</p>
+            <AspectRatio ratio={16 / 9} className="bg-muted">
+              <Image
+                src={`https://notes-hub.fly.dev/api/files/bo9f4kjgkhcv4ch/${id}/${image}`}
+                alt={title}
+                fill
+                className="rounded-md object-cover"
+              />
+            </AspectRatio>
+            <CardDescription>
+            <div className="flex items-center justify-between pt-2 text-lg">
+        <div>Дата: {startTime}</div>
+        <div>От: {time}</div>
+      </div>
+      </CardDescription>
+          </CardContent>
+          <CardFooter>
+         
+            
+
+          </CardFooter>
+        </Card>
       </Link>
 
       <RightSidebar>
