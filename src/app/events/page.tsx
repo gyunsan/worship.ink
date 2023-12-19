@@ -1,5 +1,4 @@
 // import PocketBase from 'pocketbase';
-import image from "next/image";
 import Image from "next/image";
 import Link from "next/link";
 

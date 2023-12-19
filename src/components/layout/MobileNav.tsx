@@ -7,6 +7,9 @@ import {
   FolderIcon,
   HomeIcon,
   XMarkIcon,
+  UsersIcon,
+  VideoCameraIcon,
+  MusicalNoteIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,16 +19,15 @@ function classNames(...classes: string[]) {
 }
 
 const navigation = [
-  { name: "Home", href: "/", icon: HomeIcon, current: true },
-  { name: "Recipes", href: "/recipe", icon: FolderIcon, current: false },
-  { name: "Drinks", href: "/drinks", icon: FolderIcon, current: false },
-  {
-    name: "Ingredients",
-    href: "/benefits",
-    icon: FolderIcon,
-    current: false,
-  },
+  { name: "Начало", href: "/", icon: HomeIcon, current: true },
+  { name: "Събития", href: "/", icon: UsersIcon, current: false },
+  { name: "Песни", href: "/songs", icon: MusicalNoteIcon, current: false },
+  { name: "Филми", href: "/movies", icon: VideoCameraIcon, current: false },
 ];
+// const resources = [
+//   { id: 1, name: "Църкви", href: "#", initial: "Ц", current: false },
+//   { id: 2, name: "Молитва", href: "#", initial: "М", current: false },
+// ];
 
 // const teams = [
 //   { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
@@ -134,10 +136,10 @@ export default function MobileNav() {
                       </li>
                       {/* <li>
                         <div className="text-xs font-semibold leading-6 text-gray-400">
-                          Your teams
+                          Your resources
                         </div>
                         <ul role="list" className="-mx-2 mt-2 space-y-1">
-                          {teams.map((team) => (
+                          {resources.map((team) => (
                             <li key={team.name}>
                               <a
                                 href={team.href}
@@ -151,8 +153,8 @@ export default function MobileNav() {
                                 <span
                                   className={classNames(
                                     team.current
-                                      ? "text-[#1AA492] border-green-600"
-                                      : "text-gray-400 border-gray-200 group-hover:border-green-600 group-hover:text-[#1AA492]",
+                                      ? "text-[#1AA492] border-[#1AA492]"
+                                      : "text-gray-400 border-gray-200 group-hover:border-[#1AA492] group-hover:text-[#1AA492]",
                                     "flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white"
                                   )}
                                 >
@@ -166,6 +168,14 @@ export default function MobileNav() {
                       </li> */}
                       <li className="-mx-6 mt-auto"></li>
                       <li className="text-xs text-center text-gray-500">
+                        <Link className="mx-5" href={"/about"} passHref>
+                          About
+                        </Link>
+                        <Link className="mx-5" href={"/contact"} passHref>
+                          Contact
+                        </Link>
+                      </li>
+                      <li className="text-xs text-center text-gray-500">
                         <Link className="m-5" href={"/terms"} passHref>
                           Terms
                         </Link>
@@ -177,10 +187,7 @@ export default function MobileNav() {
                         </Link>
                       </li>
                       <li className="text-xs text-center mb-4 text-gray-500">
-                        <span>
-                          &copy; {new Date().getFullYear()} Motivational Bio.
-                          All rights reserved.
-                        </span>
+                        <span> &copy; Worship.ink {new Date().getFullYear()} </span>
                       </li>
                     </ul>
                   </nav>
@@ -201,7 +208,7 @@ export default function MobileNav() {
           <Bars3Icon className="h-6 w-6" aria-hidden="true" />
         </button>
         <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">
-<div className='text-3xl text-center'>worship.ink</div>
+          <div className="text-3xl text-center">worship.ink</div>
         </div>
         <a href="#">
           <span className="sr-only">Your profile</span>

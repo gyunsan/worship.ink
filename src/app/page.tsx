@@ -76,7 +76,7 @@ function Note({ note }: any) {
               <div>
                 {" "}
                 <div>
-                  <Badge variant="outline">Русе</Badge>
+                  <Badge variant="secondary">Русе</Badge>
                 </div>
               </div>
             </div>
@@ -105,9 +105,7 @@ function Note({ note }: any) {
         </Card>
       </Link>
 
-      <RightSidebar>
-        <p>Right</p>
-      </RightSidebar>
+      <RightSidebar>Right</RightSidebar>
     </div>
   );
 }

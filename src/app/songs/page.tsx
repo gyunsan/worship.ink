@@ -30,8 +30,15 @@ export default async function Events() {
   const notes = await getNotes();
 
   return (
-    <div>
-      <h1 className="p-12 text-center">Нека да хвалим Господа... 🎸🎤💜</h1>
+    <div className="mx-auto max-w-2xl">
+      <div className="flex flex-nowrap justify-center items-center">
+        <span>
+          <h1 className="p-12 text-3xl">Песни</h1>
+        </span>
+        <div>
+          {/* <Image src={"/events.svg"} width={100} height={100} alt="events" /> */}
+        </div>
+      </div>
       <div>
         {notes?.map((note) => {
           return <Note key={note.id} note={note} />;
@@ -46,9 +53,10 @@ function Note({ note }: any) {
   const createdTime = dayjs(created).fromNow();
 
   return (
+    <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 sm:flex ">
     <ul
       role="list"
-      className="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl"
+      className="divide-y lg:w-[550px] divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl"
     >
       <li
         key={id}
@@ -92,6 +100,6 @@ function Note({ note }: any) {
         </div>
       </li>
     </ul>
-
+    </div>
   );
 }
