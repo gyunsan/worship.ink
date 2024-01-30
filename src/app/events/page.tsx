@@ -25,7 +25,7 @@ export default async function Events() {
 
   return (
     <div>
-      <h1 className="p-12 text-center">Какви събития следват...  🤔</h1>
+      <h1 className="p-12 text-center">Какви събития следват... 🤔</h1>
       <div>
         {notes?.map((note) => {
           return <Note key={note.id} note={note} />;
@@ -47,7 +47,8 @@ function Note({ note }: any) {
             src={`https://notes-hub.fly.dev/api/files/bo9f4kjgkhcv4ch/${id}/${image}`}
             width={100}
             height={100}
-            alt={title} />
+            alt={title}
+          />
         </div>
         <div>
           <h4 className="text-lg font-bold">{title}</h4>
@@ -56,6 +57,5 @@ function Note({ note }: any) {
         </div>
       </div>
     </Link>
-    
   );
 }

@@ -108,8 +108,6 @@ export default async function NotePage({ params }: any) {
             </form>
           </section>
         </div> */}
-
-      <RightSidebar>Sidebar</RightSidebar>
     </div>
   );
 }

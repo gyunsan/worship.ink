@@ -1,13 +1,16 @@
-import {   Bars3Icon,
+import {
+  Bars3Icon,
   FolderIcon,
   HomeIcon,
   XMarkIcon,
   UsersIcon,
   VideoCameraIcon,
-  MusicalNoteIcon,} from "@heroicons/react/24/outline";
+  MusicalNoteIcon,
+} from "@heroicons/react/24/outline";
 import MobileNav from "./MobileNav";
 import Image from "next/image";
 import Link from "next/link";
+import path from "path";
 
 const navigation = [
   { name: "Начало", href: "/", icon: HomeIcon, current: true },
@@ -113,35 +116,33 @@ export default function MainLayout() {
                     ))}
                   </ul>
                 </li> */}
-                <li className="-mx-6 mt-auto"></li>
+                <li className="mt-auto mb-6"></li>
                 <li className="text-xs text-center text-gray-500">
-                  <Link className="mx-5" href={"/about"} passHref>
-                    About
-                  </Link>
-                  <Link className="mx-5" href={"/contact"} passHref>
-                    Contact
-                  </Link>
-                </li>
-                <li className="text-xs text-center text-gray-500">
-                  <Link className="m-5" href={"/terms"} passHref>
-                    Terms
-                  </Link>
-                  <Link className="m-5" href={"/privacy"} passHref>
-                    Privacy
-                  </Link>
-                  <Link className="m-5" href={"/cookie"} passHref>
-                    Cookie
-                  </Link>
+                  <span>&copy; {new Date().getFullYear()} Worship.ink</span>
+                  <br />
+                  <span>Made with 💛 in Ruse, Bulgaria</span>
                 </li>
                 <li className="text-xs text-center mb-4 text-gray-500">
-                <span> &copy; Worship.ink {new Date().getFullYear()} </span>
+                  <Link href={"/about"} className="ml-2" passHref>
+                    About
+                  </Link>
+                  <Link href={"/contact"} className="ml-2" passHref>
+                    Contact
+                  </Link>
+                  <Link href={"/terms"} className="ml-2" passHref>
+                    Terms
+                  </Link>
+                  <Link href={"/privacy"} className="ml-2" passHref>
+                    Privacy
+                  </Link>
+                  <Link href={"/cookie"} className="ml-2" passHref>
+                    Cookie
+                  </Link>
                 </li>
               </ul>
             </nav>
           </div>
         </div>
-
-        {/* <RightSidebar /> */}
       </div>
     </>
   );

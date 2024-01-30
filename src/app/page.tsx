@@ -14,6 +14,7 @@ import {
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+
 dayjs.extend(relativeTime);
 
 async function getNotes() {
@@ -56,8 +57,18 @@ export default async function HomePage() {
 }
 
 function Note({ note }: any) {
-  const { id, title, content, created, start, image, end, published } =
-    note || {};
+  const {
+    id,
+    title,
+    content,
+    created,
+    start,
+    image,
+    end,
+    published,
+    address,
+    location,
+  } = note || {};
   const startTime = dayjs(start).format("DD/MM/YYYY"); // 03/19/2022 03:57:25 PM"
   const endTime = dayjs(end).format("DD/MM/YYYY hh:mm" + "ч."); // 03/19/2022 03:57:25 PM"
   const createdTime = dayjs(created).fromNow();
@@ -81,10 +92,7 @@ function Note({ note }: any) {
               </div>
             </div>
             <CardTitle>{title}</CardTitle>
-            <CardDescription>
-              {" "}
-              Апостолска църква "Дом на Пробив"
-            </CardDescription>
+            <CardDescription>{location}</CardDescription>
           </CardHeader>
           <CardContent>
             <AspectRatio ratio={16 / 9} className="bg-muted">
@@ -104,8 +112,6 @@ function Note({ note }: any) {
           </CardContent>
         </Card>
       </Link>
-
-      <RightSidebar>Right</RightSidebar>
     </div>
   );
 }

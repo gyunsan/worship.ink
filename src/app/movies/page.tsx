@@ -91,10 +91,6 @@ function Movies({ movie }: any) {
           </Link>
         </CardContent>
       </Card>
-
-      <RightSidebar>
-        <p>Right</p>
-      </RightSidebar>
     </div>
   );
 }

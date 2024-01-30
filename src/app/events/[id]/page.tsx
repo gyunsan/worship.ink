@@ -30,8 +30,9 @@ export default async function NotePage({ params }: any) {
   const createdTime = dayjs(note.created).fromNow();
   const startDate = dayjs(note.start).format("DD/MM/YYYY"); // 03/19/2022 03:57:25 PM"
   const endDate = dayjs(note.end).format("DD/MM/YYYY"); // 03/19/2022 03:57:25 PM"
-  const startTime = dayjs(note.start).format("hh:mm" + "ч."); // 15:57ч."
+  const startTime = dayjs(note.start).format("DD/MM/YYYY"); // 03/19/2022 03:57:25 PM"
   const endTime = dayjs(note.end).format("hh:mm" + "ч."); // 15:57ч."
+  const time = dayjs(note.start).format("HH:mm" + "ч."); // 15:57ч."
 
   return (
     <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 sm:flex p-8 justify-center">
@@ -50,8 +51,7 @@ export default async function NotePage({ params }: any) {
             </div>
           </div>
           <CardTitle>{note.title}</CardTitle>
-          <CardDescription> Апостолска църква "Дом на Пробив"</CardDescription>
-          <CardDescription> {note.address}</CardDescription>
+          <CardDescription> {note.location}</CardDescription>
         </CardHeader>
 
         <CardContent>
@@ -67,15 +67,10 @@ export default async function NotePage({ params }: any) {
           <p>{note.content}</p>
         </CardContent>
         <CardContent>
-          {" "}
-          <p className="font-semibold py-2">Започва: {startTime} на {startDate}</p>
-          <p className="font-semibold py-2">Свършва: {endTime} на  {endDate}</p>
+          Започва: {startTime} на {time} <br />
+          Адрес: {note.address}
         </CardContent>
       </Card>
-      <RightSidebar>
-        <p>Right</p>
-      </RightSidebar>
     </div>
-    
   );
 }

@@ -81,21 +81,13 @@ export default async function NotePage({ params }: any) {
             </h1>
           </div>
           <div className="mt-4">
-            <p className="text-xl">
-              {note.content}
-            </p>
+            <p className="text-xl">{note.content}</p>
           </div>
 
           <div className="mt-4">
-            <p className="text-sm">
-             Започва: {note.start}
-            </p>
-            <p className="text-sm">
-             Свършва: {note.end}
-            </p>
+            <p className="text-sm">Започва: {note.startTime}</p>
+            <p className="text-sm">Свършва: {note.time}</p>
           </div>
-
-
 
           {/* <section aria-labelledby="information-heading" className="mt-4">
             <h2 id="information-heading" className="sr-only">
