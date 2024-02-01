@@ -80,9 +80,6 @@ export default async function MoviePage({ params }: any) {
 <p className="text-xs text-right text-zinc-400">id: {movie.id}</p>
         </CardContent>
       </Card>
-      <RightSidebar>
-        <p>Right</p>
-      </RightSidebar>
     </div>
     
   );
